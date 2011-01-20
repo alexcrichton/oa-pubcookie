@@ -12,11 +12,11 @@ module OmniAuth
       end
 
       def auth_hash username
-        andrew_id = username.match(/^(.*)@/)[0]
+        andrew_id = username.match(/^(.*)@/)[1]
 
         attrs = lookup_andrew_id(andrew_id)
 
-        OmniAuth::Utils.deep_merge(super(), {
+        OmniAuth::Utils.deep_merge(super, {
           'uid'       => andrew_id,
           'provider'  => 'cmu',
           'user_info' => {
