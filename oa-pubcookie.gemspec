@@ -19,6 +19,4 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack-pubcookie'
   s.add_dependency 'oa-core'
   s.add_dependency 'net-ldap'
-
-  s.add_development_dependency 'rspec'
 end
