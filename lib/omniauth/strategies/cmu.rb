@@ -8,6 +8,9 @@ module OmniAuth
 
       def pubcookie_options= options
         options[:login_server] ||= 'webiso.andrew.cmu.edu'
+        options[:granting_cert] ||=
+          File.expand_path('../cmu_granting.cert', __FILE__)
+
         super
       end
 
