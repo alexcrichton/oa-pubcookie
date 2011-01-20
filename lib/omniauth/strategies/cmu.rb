@@ -1,10 +1,10 @@
 require 'omniauth/strategies/pubcookie'
 
-module Omniauth
+module OmniAuth
   module Strategies
     class CMU < Pubcookie
 
-      include Pubcookie::CMULdap
+      include OmniAuth::Pubcookie::CMULdap
 
       def auth_hash username
         andrew_id = username.match(/^(.*)@/)[0]

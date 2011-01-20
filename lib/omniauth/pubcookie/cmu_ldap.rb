@@ -1,6 +1,6 @@
 require 'net/ldap'
 
-module Omniauth
+module OmniAuth
   module Pubcookie
     module CMULdap
       # Thanks to Marshall Roch for the original jump start for this code.

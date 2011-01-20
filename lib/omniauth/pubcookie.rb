@@ -1,4 +1,6 @@
-module Omniauth
+require 'omniauth/core'
+
+module OmniAuth
   module Pubcookie
     autoload :VERSION, 'omniauth/pubcookie/version'
     autoload :CMULdap, 'omniauth/pubcookie/cmu_ldap'

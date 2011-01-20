@@ -4,7 +4,7 @@ require 'omniauth/pubcookie/version'
 
 Gem::Specification.new do |s|
   s.name        = 'oa-pubcookie'
-  s.version     = Omniauth::Pubcookie::VERSION
+  s.version     = OmniAuth::Pubcookie::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Alex Crichton']
   s.email       = ['alex@crichton.co']

@@ -1,11 +1,11 @@
 require 'omniauth/strategy'
 require 'rack/pubcookie'
 
-module Omniauth
+module OmniAuth
   module Strategies
     class Pubcookie
 
-      include Omniauth::Strategy
+      include OmniAuth::Strategy
       include Rack::Pubcookie::Auth
 
       def initialize app, options, &block
