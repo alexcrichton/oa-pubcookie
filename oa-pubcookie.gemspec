@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.test_files    = `git ls-files -- spec/*`.split("\n")
   s.require_paths = ['lib']
 
-  s.add_dependency 'rack-pubcookie'
+  s.add_dependency 'rack-pubcookie', '>= 0.0.3'
   s.add_dependency 'oa-core'
   s.add_dependency 'net-ldap'
 end
