@@ -1,3 +1,6 @@
+require 'omniauth/strategy'
+require 'rack/pubcookie'
+
 module Omniauth
   module Strategies
     class Pubcookie

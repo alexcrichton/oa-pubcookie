@@ -1,3 +1,5 @@
+require 'omniauth/strategies/pubcookie'
+
 module Omniauth
   module Strategies
     class CMU < Pubcookie
