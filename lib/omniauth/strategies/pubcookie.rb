@@ -23,6 +23,7 @@ module OmniAuth
 
         if username
           request.env['omniauth.auth'] = auth_hash(username)
+          request.env['REQUEST_METHOD'] = 'GET'
 
           status, headers, body = call_app!
 
