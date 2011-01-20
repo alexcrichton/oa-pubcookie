@@ -1,24 +1,29 @@
 module Omniauth
   module Strategies
-    class CMU < Rack::Pubcookie::Auth
-      include Omniauth::Strategy
-      include Rack::Pubcookie::Auth
+    class CMU < Pubcookie
 
-      def initialize
-      end
+      include Pubcookie::CMULdap
 
-      def request_phase
-        Rack::Response.new(login_page_html).finish
-      end
+      def auth_hash username
+        andrew_id = username.match(/^(.*)@/)[0]
 
-      def callback_phase
-        username = extract_username request
-        
-        if username
-          
-        else
-          fail! :login_failed
-        end
+        attrs = lookup_andrew_id(andrew_id)
+
+        OmniAuth::Utils.deep_merge(super(), {
+          'uid'       => andrew_id,
+          'provider'  => 'cmu',
+          'user_info' => {
+            'name'       => attrs[:cn],
+            'email'      => attrs[:mail],
+            'nickname'   => attrs[:nickname],
+            'first_name' => attrs[:givenname],
+            'last_name'  => attrs[:sn],
+            'class'      => attrs[:cmustudentclass],
+            'department' => attrs[:cmudepartment],
+            'location'   => attrs[:cmucampus]
+          },
+          'extra' => {'user_hash' => attrs}
+        })
       end
 
     end

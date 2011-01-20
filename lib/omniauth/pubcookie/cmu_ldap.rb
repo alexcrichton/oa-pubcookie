@@ -13,7 +13,7 @@ module Omniauth
                  'cmuStudentClass', 'mail', 'cmuPreferredMail',
                  'cmuPersonPrincipalName']
 
-        ldap.search(:base => 'ou=Person,dc=cmu,dc=edu', :attributes => attrs,
+        ldap.search(:base => 'ou=Person,dc=cmu,dc=edu',
                     :filter => filter, :return_result => true) do |entry|
           results = {}
 
