@@ -6,6 +6,11 @@ module OmniAuth
 
       include OmniAuth::Pubcookie::CMULdap
 
+      def pubcookie_options= options
+        options[:login_server] ||= 'webiso.andrew.cmu.edu'
+        super
+      end
+
       def auth_hash username
         andrew_id = username.match(/^(.*)@/)[0]
 
