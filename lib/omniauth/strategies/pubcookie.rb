@@ -34,7 +34,11 @@ module Omniauth
       end
 
       def auth_hash username
-        super.merge('uid' => username)
+        OmniAuth::Utils.deep_merge(super(), {
+          'uid'       => username,
+          'provider'  => 'pubcookie',
+          'user_info' => {'name' => username}
+        })
       end
 
     end
