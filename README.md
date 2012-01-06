@@ -16,7 +16,7 @@ CMU (Carnegie Mellon University) uses WebISO for it's authentication. This servi
 
 The only difference is that neither `:login_server` nor `:granting_cert` be specified and it will default to `webiso.andrew.cmu.edu` and CMU's granting certificate.
 
-The returning `omniauth.auth` hash then has the following keys:
+The returning `omniauth.auth` hash complies with [Omniauth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema) and as such has the following keys:
 
 * `uid` - the user's Andrew iD
 * `user_info`
@@ -25,8 +25,8 @@ The returning `omniauth.auth` hash then has the following keys:
   * `nickname`
   * `first_name`
   * `last_name`
-  * `class` - the users' year at CMU (Freshman, Sophomore, ...)
-  * `department` - the listed department for the user (i.e. Computer Science)
   * `location` - the campus which the user is located at (Pittsburgh/Qatar)
 * `extra`
-  * `user_hash` - everything returned from LDAP for the user, you might find something extra in here
+  * `class` - the users' year at CMU (Freshman, Sophomore, ...)
+  * `department` - the listed department for the user (i.e. Computer Science)
+  * `raw_info` - everything returned from LDAP for the user, you might find something extra in here

@@ -8,21 +8,25 @@ module OmniAuth
       include OmniAuth::Strategy
       include Rack::Pubcookie::Auth
 
-      def initialize app, options, &block
+      option :return_to, '/auth/pubcookie/callback'
+
+      # Override initialize.  Omniauth frowns on this
+      # but we need to set pubcookie_options on initialize
+      def initialize(app, *args, &block)
+        super(app, *args, &block)
         self.pubcookie_options = options
-        super app, :pubcookie, &block
       end
 
       def request_phase
+        @raw_info = nil
         Rack::Response.new(login_page_html).finish
       end
 
       def callback_phase
-        username = extract_username request
-        request.env['REMOTE_USER'] = username # Part of the pubcookie spec
+        request.env['REMOTE_USER'] = raw_info[:username] # Part of the pubcookie spec
 
-        if username
-          request.env['omniauth.auth'] = auth_hash(username)
+        if raw_info[:username]
+          self.env['omniauth.auth'] = auth_hash #provided by Omniauth now
           request.env['REQUEST_METHOD'] = 'GET'
 
           status, headers, body = call_app!
@@ -37,14 +41,18 @@ module OmniAuth
         end
       end
 
-      def auth_hash username
-        OmniAuth::Utils.deep_merge(super(), {
-          'uid'       => username,
-          'provider'  => 'pubcookie',
-          'user_info' => {'name' => username}
-        })
+      # unique user id
+      uid { raw_info[:username] }
+
+      info do
+        {
+          'name' => raw_info[:username]
+        }
       end
 
+      def raw_info
+        @raw_info ||= {:username => extract_username(request)}
+      end
     end
   end
 end

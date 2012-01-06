@@ -9,10 +9,6 @@ module OmniAuth
         ldap = Net::LDAP.new :host => 'ldap.andrew.cmu.edu', :port => 389
 
         filter = Net::LDAP::Filter.eq('cmuAndrewID', username)
-        attrs = ['givenName', 'sn', 'nickname', 'eduPersonSchoolCollegeName',
-                 'cmuStudentClass', 'mail', 'cmuPreferredMail',
-                 'cmuPersonPrincipalName']
-
         ldap.search(:base => 'ou=Person,dc=cmu,dc=edu',
                     :filter => filter, :return_result => true) do |entry|
           results = {}
