@@ -3,7 +3,7 @@ $:.push File.expand_path('../lib', __FILE__)
 require 'omniauth/pubcookie/version'
 
 Gem::Specification.new do |s|
-  s.name        = 'oa-pubcookie'
+  s.name        = 'omniauth-pubcookie'
   s.version     = OmniAuth::Pubcookie::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['Alex Crichton']
