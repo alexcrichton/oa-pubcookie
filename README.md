@@ -1,7 +1,7 @@
 OmniAuth::Pubcookie
 ===================
 
-This gem implements two strategies, `OmniAuth::Strategies::Pubcookie` and `Omniauth::Strategies::CMU`. The syntax between the two is similar, and can be instantiated like so:
+This gem implements two strategies, `OmniAuth::Strategies::Pubcookie` and `Omniauth::Strategies::CMU`. The syntax between the two is similar and can be instantiated like so:
 
     use OmniAuth::Strategies::Pubcookie, :login_server => '...', :host => '...',
       :appid => '...', :keyfile => '...', :granting_cert => '...'
@@ -14,9 +14,9 @@ CMU (Carnegie Mellon University) uses WebISO for it's authentication. This servi
 
     use OmniAuth::Strategies::CMU, :host => '...', :appid => '...', :keyfile => '...'
 
-The only difference is that neither `:login_server` nor `:granting_cert` be specified and it will default to `webiso.andrew.cmu.edu` and CMU's granting certificate.
+The only difference is that neither `:login_server` nor `:granting_cert` need to be specified and will default to `webiso.andrew.cmu.edu` and CMU's granting certificate.
 
-The returning `omniauth.auth` hash complies with [Omniauth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema) and as such has the following keys:
+The returning `omniauth.auth` hash complies with the [Omniauth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema) and as such has the following keys:
 
 * `uid` - the user's Andrew iD
 * `user_info`

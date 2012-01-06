@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = 'omniauth-pubcookie'
   s.version     = OmniAuth::Pubcookie::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ['Alex Crichton']
-  s.email       = ['alex@crichton.co']
+  s.authors     = ['Alex Crichton', 'Stafford Brunk']
+  s.email       = ['alex@crichton.co', 'stafford.brunk@gmail.com']
   s.homepage    = 'https://github.com/alexcrichton/oa-pubcookie'
   s.summary     = 'Omniauth strategy using pubcookie'
   s.description = 'Omniauth strategy using pubcookie with special additions for CMU students where information is fetched via LDAP'
