@@ -23,10 +23,11 @@ module OmniAuth
       end
 
       def callback_phase
-        request.env['REMOTE_USER'] = raw_info[:username] # Part of the pubcookie spec
+        # Part of the pubcookie spec
+        request.env['REMOTE_USER'] = raw_info[:username]
 
         if raw_info[:username]
-          self.env['omniauth.auth'] = auth_hash #provided by Omniauth now
+          self.env['omniauth.auth'] = auth_hash # provided by Omniauth now
           request.env['REQUEST_METHOD'] = 'GET'
 
           status, headers, body = call_app!
@@ -45,9 +46,7 @@ module OmniAuth
       uid { raw_info[:username] }
 
       info do
-        {
-          'name' => raw_info[:username]
-        }
+        {'name' => raw_info[:username]}
       end
 
       def raw_info
