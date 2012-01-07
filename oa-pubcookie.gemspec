@@ -19,4 +19,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'rack-pubcookie', '>= 0.0.3'
   s.add_dependency 'omniauth', '>= 1.0.0'
   s.add_dependency 'net-ldap'
+  s.add_development_dependency 'rack', '>= 1.4.0'
 end
